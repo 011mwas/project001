@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comfy Palace - Coffee & Books Haven</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        body {
+            background-color: #f9f5f0;
+            color: #3a3226;
+        }
+        
+        /* Navigation Bar */
+        .nav-container {
+            background-color: #3a3226;
+            padding: 20px 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Top Navigation */
+        .top-nav {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .top-nav a {
+            color: #f9f5f0;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .top-nav a:hover {
+            color: #d4a762;
+        }
+        
+        /* Logo */
+        .logo {
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .logo-text {
+            color: #d4a762;
+            font-size: 42px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        /* Bottom Navigation */
+        .bottom-nav {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .bottom-nav a {
+            color: #f9f5f0;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .bottom-nav a:hover {
+            color: #d4a762;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(58, 50, 38, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            color: #f9f5f0;
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            color: #f9f5f0;
+            font-size: 20px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #d4a762;
+            color: #3a3226;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #f9f5f0;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #f9f5f0;
+            font-size: 24px;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .top-nav, .bottom-nav {
+                display: none;
+            }
+            
+            .top-nav.active, .bottom-nav.active {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-container {
+                padding: 20px;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="nav-container">
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        
+        <div class="top-nav" id="topNav">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+        </div>
+        
+        <div class="logo">
+            <div class="logo-text">Comfy Palace</div>
+        </div>
+        
+        <div class="bottom-nav" id="bottomNav">
+            <a href="#">Menu</a>
+            <a href="#">The Library</a>
+            <a href="#">Events</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>A Sanctuary for Coffee Lovers & Bookworms</h1>
+            <p>Discover our handcrafted coffees and curated book collection in the coziest atmosphere in town.</p>
+            <a href="#" class="btn">Visit Us Today</a>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const topNav = document.getElementById('topNav');
+        const bottomNav = document.getElementById('bottomNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            topNav.classList.toggle('active');
+            bottomNav.classList.toggle('active');
+        });
+    </script>
+    <style>
+        /* Previous styles remain unchanged */
+        
+        /* How It Works Section */
+        .how-it-works {
+            padding: 80px 50px;
+            background-color: #f9f5f0;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            color: #3a3226;
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: #d4a762;
+            bottom: -15px;
+            left: 25%;
+        }
+        
+        .process-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .process-step {
+            width: 280px;
+            margin: 20px;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .process-step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-number {
+            font-size: 24px;
+            color: #d4a762;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .step-icon {
+            font-size: 50px;
+            color: #d4a762;
+            margin-bottom: 20px;
+        }
+        
+        .step-title {
+            font-size: 22px;
+            color: #3a3226;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .step-description {
+            color: #6b5d4d;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section {
+            margin-top: 60px;
+        }
+        
+        .cta-title {
+            font-size: 32px;
+            color: #3a3226;
+            margin-bottom: 20px;
+        }
+        
+        .cta-description {
+            font-size: 18px;
+            color: #6b5d4d;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .how-it-works {
+                padding: 60px 20px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .process-step {
+                width: 100%;
+                margin: 20px 0;
+            }
+            
+            .cta-title {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Previous HTML remains unchanged until after the hero section -->
+    
+    <section class="how-it-works">
+        <h2 class="section-title">HOW IT WORKS</h2>
+        
+        <div class="process-container">
+            <div class="process-step">
+                <div class="step-number">01</div>
+                <div class="step-icon">☕</div>
+                <h3 class="step-title">Discover Our Menu</h3>
+                <p class="step-description">Explore our handcrafted coffee selections and delicious pastries curated for every taste.</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">02</div>
+                <div class="step-icon">📚</div>
+                <h3 class="step-title">Browse Our Collection</h3>
+                <p class="step-description">Get lost in our carefully selected books, from bestsellers to hidden literary gems.</p>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">03</div>
+                <div class="step-icon">🛋️</div>
+                <h3 class="step-title">Find Your Comfort</h3>
+                <p class="step-description">Settle into our cozy nooks - the perfect spot to enjoy your coffee and book.</p>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h3 class="cta-title">We Help You Find Your Perfect Reading Escape</h3>
+            <p class="cta-description">Combine the joy of premium coffee with the pleasure of reading in our thoughtfully designed space that stimulates both your taste buds and imagination.</p>
+            <a href="#" class="btn">Explore Our Space</a>
+        </div>
+    </section>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const topNav = document.getElementById('topNav');
+        const bottomNav = document.getElementById('bottomNav');
+        mobileMenuBtn.addEventListener('click', () => {
+            topNav.classList.toggle('active');
+            bottomNav.classList.toggle('active');
+        });
+        <style>
+        /* Previous styles remain unchanged */
+        
+        /* Services Section */
+        .services {
+            padding: 80px 50px;
+            background-color: #f0e6d6;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .services-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .services-title {
+            font-size: 36px;
+            color: #3a3226;
+            margin-bottom: 15px;
+        }
+        
+        .services-subtitle {
+            font-size: 48px;
+            color: #d4a762;
+            font-weight: 700;
+            margin-bottom: 30px;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .services-description {
+            font-size: 20px;
+            color: #6b5d4d;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 1.6;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-top: 4px solid #d4a762;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 50px;
+            color: #d4a762;
+            margin-bottom: 20px;
+        }
+        
+        .service-name {
+            font-size: 22px;
+            color: #3a3226;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .service-text {
+            color: #6b5d4d;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .services {
+                padding: 60px 20px;
+            }
+            
+            .services-title {
+                font-size: 28px;
+            }
+            
+            .services-subtitle {
+                font-size: 36px;
+            }
+            
+            .services-description {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Previous HTML remains unchanged until after the how-it-works section -->
+    
+    <section class="services">
+        <div class="services-content">
+            <h2 class="services-title">SERVICES</h2>
+            <h3 class="services-subtitle">Your Comfort Journey</h3>
+            <p class="services-description">Discover our carefully crafted experiences designed to nourish both body and mind through the perfect blend of coffee and literature.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">☕</div>
+                    <h4 class="service-name">Artisan Coffee Blends</h4>
+                    <p class="service-text">Single-origin and specialty blends prepared by our expert baristas to awaken your senses.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📖</div>
+                    <h4 class="service-name">Curated Reading Nooks</h4>
+                    <p class="service-text">Comfortable seating areas with perfect lighting for immersive reading experiences.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🍰</div>
+                    <h4 class="service-name">Homemade Pastries</h4>
+                    <p class="service-text">Freshly baked goods made daily to complement your favorite beverage.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🎭</div>
+                    <h4 class="service-name">Literary Events</h4>
+                    <p class="service-text">Book readings, author signings, and poetry nights in our intimate space.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🎧</div>
+                    <h4 class="service-name">Reading Soundtracks</h4>
+                    <p class="service-text">Curated playlists and noise-cancelling headphones for focused reading.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🎁</div>
+                    <h4 class="service-name">Book & Brew Gifts</h4>
+                    <p class="service-text">Perfect pairing packages of books with matching coffee blends.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
